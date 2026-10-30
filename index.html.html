@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Matematika Kelas 6: Statistika & Pengukuran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for interactive diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between overflow-hidden select-none">
+
+    <!-- Top Navigation Header -->
+    <header class="glass-panel px-6 py-3 flex items-center justify-between z-20">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-xl">
+                <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div>
+                <h1 class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
+                    Matematika Kelas 6 - Kurikulum Merdeka
+                </h1>
+                <p class="text-xs text-slate-400">Statistika, Data & Pengukuran</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button onclick="toggleTOC()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg text-sm border border-slate-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-list-ul"></i> Daftar Isi
+            </button>
+            <div class="text-sm font-semibold bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-blue-400">
+                Slide <span id="current-slide-num">1</span> / <span id="total-slides-num">42</span>
+            </div>
+            <button onclick="toggleFullscreen()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 p-2 rounded-lg text-sm border border-slate-700 transition">
+                <i class="fa-solid fa-expand" id="fullscreen-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="w-full bg-slate-800 h-1.5">
+        <div id="progress-bar" class="bg-gradient-to-r from-blue-500 to-emerald-400 h-full w-0 transition-all duration-300"></div>
+    </div>
+
+    <!-- Main Slide Viewer Container -->
+    <main class="flex-1 relative p-6 flex items-center justify-center overflow-hidden">
+        <div id="slide-container" class="w-full max-w-6xl h-full flex flex-col justify-center">
+
+            <!-- PHASE 1: FOUNDATION (Slides 1-5) -->
+            <!-- Slide 1 -->
+            <div class="slide active flex-col items-center justify-center text-center space-y-6">
+                <span class="px-4 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold border border-blue-500/30">
+                    Fase 1: Fondasi Pembelajaran
+                </span>
+                <h1 class="text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    Statistika, Data & Pengukuran
+                </h1>
+                <p class="text-xl text-slate-300 max-w-2xl leading-relaxed">
+                    Petualangan Mengolah Data, Membaca Grafik, dan Menguasai Konversi Satuan dalam Kehidupan Sehari-hari.
+                </p>
+                <div class="grid grid-cols-3 gap-4 w-full max-w-3xl mt-6">
+                    <div class="glass-panel p-4 rounded-xl text-center">
+                        <i class="fa-solid fa-chart-pie text-3xl text-emerald-400 mb-2"></i>
+                        <h3 class="font-bold">Diagram & Data</h3>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl text-center">
+                        <i class="fa-solid fa-calculator text-3xl text-blue-400 mb-2"></i>
+                        <h3 class="font-bold">Mean, Median, Modus</h3>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl text-center">
+                        <i class="fa-solid fa-ruler-combined text-3xl text-amber-400 mb-2"></i>
+                        <h3 class="font-bold">Konversi Satuan</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Tujuan Pembelajaran</span>
+                <h2 class="text-3xl font-bold">Apa yang Akan Kita Pelajari?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-blue-500">
+                        <h3 class="font-bold text-lg mb-2 text-blue-300"><i class="fa-solid fa-table mr-2"></i>1. Pengolahan Data</h3>
+                        <p class="text-slate-300 text-sm">Membaca dan menyajikan data dalam bentuk tabel frekuensi, diagram batang, diagram garis, dan diagram lingkaran.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-emerald-500">
+                        <h3 class="font-bold text-lg mb-2 text-emerald-300"><i class="fa-solid fa-chart-line mr-2"></i>2. Pemusatan Data</h3>
+                        <p class="text-slate-300 text-sm">Menghitung Nilai Rata-rata (Mean), Nilai Tengah (Median), dan Data yang Paling Sering Muncul (Modus).</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-amber-500">
+                        <h3 class="font-bold text-lg mb-2 text-amber-300"><i class="fa-solid fa-weight-hanging mr-2"></i>3. Konversi Panjang & Berat</h3>
+                        <p class="text-slate-300 text-sm">Mengubah satuan panjang (km, m, cm, mm) dan berat (ton, kuintal, kg, gram).</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-l-4 border-purple-500">
+                        <h3 class="font-bold text-lg mb-2 text-purple-300"><i class="fa-solid fa-stopwatch mr-2"></i>4. Konversi Waktu & Volume</h3>
+                        <p class="text-slate-300 text-sm">Mengukur durasi waktu (jam, menit, detik) dan kapasitas volume (liter, ml, m³).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Aplikasi Nyata</span>
+                <h2 class="text-3xl font-bold">Mengapa Materi Ini Sangat Penting?</h2>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-store text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Usaha & Bisnis</h3>
+                        <p class="text-sm text-slate-300">Mengetahui produk mana yang paling laku (Modus) dan keuntungan rata-rata (Mean) harian.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-truck-ramp-box text-2xl text-emerald-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Logistik & Pengiriman</h3>
+                        <p class="text-sm text-slate-300">Menghitung tonase muatan truk (berat) dan volume kapasitas barang gantung.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-trophy text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Olahraga & Prestasi</h3>
+                        <p class="text-sm text-slate-300">Menganalisis kecepatan lari dalam hitungan menit/detik serta tren skor pertandingan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Peta Konsep</span>
+                <h2 class="text-3xl font-bold">Peta Alur Pembelajaran Hari Ini</h2>
+                <div class="flex flex-col gap-3">
+                    <div class="glass-panel p-4 rounded-xl flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center">1</span>
+                            <div>
+                                <h4 class="font-bold">Pengumpulan & Penyajian Data</h4>
+                                <p class="text-xs text-slate-400">Tabel, Diagram Batang, Garis, dan Lingkaran</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-slate-500"></i>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center">2</span>
+                            <div>
+                                <h4 class="font-bold">Statistika Dasar (Ukuran Pemusatan)</h4>
+                                <p class="text-xs text-slate-400">Menghitung Mean, Median, dan Modus</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-slate-500"></i>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center">3</span>
+                            <div>
+                                <h4 class="font-bold">Pengukuran: Tangga Konversi</h4>
+                                <p class="text-xs text-slate-400">Panjang, Berat, Waktu, dan Volume</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-slate-500"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Aktivitas Pemantik</span>
+                <h2 class="text-3xl font-bold">Tebak Data Cepat!</h2>
+                <div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center space-y-4">
+                    <p class="text-lg text-center">Berikut adalah nilai ulangan harian matematika dari 5 siswa:</p>
+                    <div class="flex gap-4 text-2xl font-extrabold text-amber-400">
+                        <span class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">80</span>
+                        <span class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">90</span>
+                        <span class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">80</span>
+                        <span class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">100</span>
+                        <span class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">70</span>
+                    </div>
+                    <div class="text-slate-300 text-sm pt-2">
+                        💡 Bisakah kamu menebak nilai berapa yang paling sering muncul?
+                    </div>
+                    <button onclick="toggleAnswer('hook-ans')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Cek Jawaban
+                    </button>
+                    <div id="hook-ans" class="hidden text-emerald-400 font-bold text-lg pt-2">
+                        Jawaban: Nilai 80 (Muncul sebanyak 2 kali)! Ini dinamakan MODUS.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 2: WARM-UP (Slides 6-10) -->
+            <!-- Slide 6 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 2: Warm-up</span>
+                <h2 class="text-3xl font-bold">Uji Prasyarat: Penjumlahan & Pembagian</h2>
+                <p class="text-slate-300">Sebelum menghitung rata-rata (Mean), mari kita latih pembagian dasar.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-panel p-5 rounded-xl text-center space-y-2">
+                        <p class="text-sm text-slate-400">Soal A</p>
+                        <p class="text-xl font-bold">450 ÷ 5 = ?</p>
+                        <button onclick="toggleAnswer('w1')" class="text-xs text-blue-400 underline">Lihat Hasil</button>
+                        <p id="w1" class="hidden text-emerald-400 font-bold">90</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl text-center space-y-2">
+                        <p class="text-sm text-slate-400">Soal B</p>
+                        <p class="text-xl font-bold">(80 + 90 + 70) ÷ 3 = ?</p>
+                        <button onclick="toggleAnswer('w2')" class="text-xs text-blue-400 underline">Lihat Hasil</button>
+                        <p id="w2" class="hidden text-emerald-400 font-bold">240 ÷ 3 = 80</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 2: Warm-up</span>
+                <h2 class="text-3xl font-bold">Uji Prasyarat: Perkalian 10, 100, 1000</h2>
+                <p class="text-slate-300">Pengoperasian tangga konversi satuan membutuhkan pemahaman perkalian & pembagian kelipatan 10.</p>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="glass-panel p-4 rounded-xl text-center space-y-2">
+                        <p class="text-lg font-bold">2.5 × 10</p>
+                        <button onclick="toggleAnswer('w3')" class="text-xs text-blue-400 underline">Cek</button>
+                        <p id="w3" class="hidden text-emerald-400 font-bold">25</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl text-center space-y-2">
+                        <p class="text-lg font-bold">3.2 × 1.000</p>
+                        <button onclick="toggleAnswer('w4')" class="text-xs text-blue-400 underline">Cek</button>
+                        <p id="w4" class="hidden text-emerald-400 font-bold">3.200</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl text-center space-y-2">
+                        <p class="text-lg font-bold">1.500 ÷ 100</p>
+                        <button onclick="toggleAnswer('w5')" class="text-xs text-blue-400 underline">Cek</button>
+                        <p id="w5" class="hidden text-emerald-400 font-bold">15</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 2: Warm-up</span>
+                <h2 class="text-3xl font-bold">Mengurutkan Bilangan dari Terkecil</h2>
+                <p class="text-slate-300">Syarat wajib mencari Median (Nilai Tengah) adalah mengurutkan data terlebih dahulu.</p>
+                <div class="glass-panel p-6 rounded-2xl text-center space-y-4">
+                    <p class="text-slate-400">Urutkan data berikut dari nilai terkecil ke terbesar:</p>
+                    <p class="text-2xl font-bold text-amber-300">12, 5, 8, 20, 15, 3</p>
+                    <button onclick="toggleAnswer('w6')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm transition">Tampilkan Urutan</button>
+                    <p id="w6" class="hidden text-xl font-bold text-emerald-400">3, 5, 8, 12, 15, 20</p>
+                </div>
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 2: Warm-up</span>
+                <h2 class="text-3xl font-bold">Mengenal Satuan Waktu Dasar</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="glass-panel p-5 rounded-xl text-center">
+                        <i class="fa-regular fa-clock text-3xl text-blue-400 mb-2"></i>
+                        <h4 class="font-bold text-lg">1 Jam</h4>
+                        <p class="text-emerald-400 font-bold text-xl mt-2">60 Menit</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl text-center">
+                        <i class="fa-solid fa-stopwatch text-3xl text-emerald-400 mb-2"></i>
+                        <h4 class="font-bold text-lg">1 Menit</h4>
+                        <p class="text-emerald-400 font-bold text-xl mt-2">60 Detik</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl text-center">
+                        <i class="fa-solid fa-hourglass-start text-3xl text-amber-400 mb-2"></i>
+                        <h4 class="font-bold text-lg">1 Jam</h4>
+                        <p class="text-emerald-400 font-bold text-xl mt-2">3.600 Detik</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 2: Warm-up</span>
+                <h2 class="text-3xl font-bold">Siap Lanjut ke Materi Inti?</h2>
+                <div class="glass-panel p-8 rounded-2xl text-center space-y-4 border border-emerald-500/30">
+                    <i class="fa-solid fa-circle-check text-5xl text-emerald-400"></i>
+                    <h3 class="text-2xl font-bold">Prasyarat Berhasil Diselesaikan!</h3>
+                    <p class="text-slate-300 max-w-lg mx-auto">Kamu sudah siap memahami konsep penyajian data, statistika, dan konversi pengukuran dengan mudah.</p>
+                </div>
+            </div>
+
+            <!-- PHASE 3: CORE TOPICS (Slides 11-23) -->
+            <!-- Slide 11 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Materi Inti - Data</span>
+                <h2 class="text-3xl font-bold">Penyajian Data: Tabel Frekuensi</h2>
+                <p class="text-slate-300">Tabel frekuensi menyusun data acak menjadi rapi agar mudah dibaca.</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass-panel p-4 rounded-xl">
+                        <h4 class="font-bold mb-2 text-amber-300">Data Acak Nilai:</h4>
+                        <p class="text-sm font-mono bg-slate-900 p-3 rounded-lg border border-slate-800 text-slate-300">70, 80, 70, 90, 80, 80, 100, 90, 70, 80</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl">
+                        <h4 class="font-bold mb-2 text-emerald-300">Tabel Frekuensi:</h4>
+                        <table class="w-full text-sm text-left text-slate-300">
+                            <thead class="text-xs uppercase bg-slate-800 text-slate-400">
+                                <tr>
+                                    <th class="px-3 py-2">Nilai</th>
+                                    <th class="px-3 py-2">Frekuensi (Banyaknya)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-slate-800">
+                                    <td class="px-3 py-1.5">70</td>
+                                    <td class="px-3 py-1.5">3 siswa</td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <td class="px-3 py-1.5">80</td>
+                                    <td class="px-3 py-1.5">4 siswa</td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <td class="px-3 py-1.5">90</td>
+                                    <td class="px-3 py-1.5">2 siswa</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-1.5">100</td>
+                                    <td class="px-3 py-1.5">1 siswa</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Materi Inti - Data</span>
+                <h2 class="text-3xl font-bold">Diagram Batang (Bar Chart)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="space-y-3">
+                        <p class="text-slate-300">Diagram batang menggunakan persegi panjang tegak atau mendatar untuk membandingkan jumlah antar kategori.</p>
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-blue-500 text-sm">
+                            <span class="font-bold text-blue-300">Ciri Utama:</span> Sumbu X menunjukkan Kategori/Jenis Data, Sumbu Y menunjukkan Jumlah/Frekuensi.
+                        </div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl h-64 flex items-center justify-center">
+                        <canvas id="barChartDemo"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Materi Inti - Data</span>
+                <h2 class="text-3xl font-bold">Diagram Garis (Line Graph)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="space-y-3">
+                        <p class="text-slate-300">Diagram garis sangat cocok digunakan untuk menyajikan data yang **berkelanjutan** atau mengalami perkembangan dari waktu ke waktu.</p>
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-emerald-500 text-sm">
+                            <span class="font-bold text-emerald-300">Contoh Penggunaan:</span> Suhu badan pasien tiap jam, hasil penjualan bulanan, atau tinggi tanaman.
+                        </div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl h-64 flex items-center justify-center">
+                        <canvas id="lineChartDemo"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Materi Inti - Data</span>
+                <h2 class="text-3xl font-bold">Diagram Lingkaran (Pie Chart)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="space-y-3">
+                        <p class="text-slate-300">Menyajikan data dalam bentuk potongan lingkaran yang dinyatakan dalam **Persentase (%)** atau **Derajat (°)**.</p>
+                        <div class="glass-panel p-4 rounded-xl text-xs space-y-2">
+                            <p class="font-bold text-amber-300">Rumus Derajat:</p>
+                            <p class="font-mono bg-slate-900 p-2 rounded">(Banyak Data / Total Data) × 360°</p>
+                            <p class="font-bold text-amber-300">Rumus Persentase:</p>
+                            <p class="font-mono bg-slate-900 p-2 rounded">(Banyak Data / Total Data) × 100%</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl h-64 flex items-center justify-center">
+                        <canvas id="pieChartDemo"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 15 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Statistika</span>
+                <h2 class="text-3xl font-bold">Mean (Rata-rata Hitung)</h2>
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-blue-500 space-y-4">
+                    <p class="text-lg">Mean adalah jumlah seluruh data dibagi dengan banyaknya data.</p>
+                    <div class="bg-slate-900 p-4 rounded-xl text-center">
+                        <p class="text-xl font-bold text-blue-400">Mean = (Jumlah Seluruh Data) ÷ (Banyak Data)</p>
+                    </div>
+                    <div class="text-sm text-slate-300 bg-slate-800/50 p-4 rounded-xl">
+                        <p class="font-bold text-white mb-1">Contoh Sederhana:</p>
+                        <p>Nilai: 6, 8, 10. Jumlah = 24. Banyak Data = 3.</p>
+                        <p class="text-emerald-400 font-bold mt-1">Mean = 24 ÷ 3 = 8</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 16 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Statistika</span>
+                <h2 class="text-3xl font-bold">Median (Nilai Tengah)</h2>
+                <p class="text-slate-300">Median adalah nilai tengah dari kumpulan data yang telah **diurutkan dari terkecil ke terbesar**.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-panel p-5 rounded-xl border-t-4 border-emerald-500">
+                        <h4 class="font-bold text-emerald-300 mb-2">1. Banyak Data Ganjil</h4>
+                        <p class="text-sm text-slate-300 mb-2">Data: 3, 5, <span class="text-amber-400 font-bold underline">7</span>, 8, 9</p>
+                        <p class="text-xs text-slate-400">Langsung ambil nilai tepat di posisi tengah.</p>
+                        <p class="text-emerald-400 font-bold mt-2">Median = 7</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-t-4 border-amber-500">
+                        <h4 class="font-bold text-amber-300 mb-2">2. Banyak Data Genap</h4>
+                        <p class="text-sm text-slate-300 mb-2">Data: 4, 6, <span class="text-amber-400 font-bold">7, 9</span>, 10, 12</p>
+                        <p class="text-xs text-slate-400">Jumlahkan 2 nilai tengah lalu bagi 2.</p>
+                        <p class="text-emerald-400 font-bold mt-2">Median = (7 + 9) ÷ 2 = 8</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 17 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Statistika</span>
+                <h2 class="text-3xl font-bold">Modus (Data Paling Sering Muncul)</h2>
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-purple-500 space-y-4">
+                    <p class="text-lg">Modus adalah nilai data yang memiliki **frekuensi terbesar/ terbanyak**.</p>
+                    <div class="bg-slate-900 p-4 rounded-xl">
+                        <p class="text-sm text-slate-300">Data ukuran sepatu: 36, 37, 37, 38, 38, 38, 39, 40</p>
+                        <ul class="text-xs text-slate-400 mt-2 space-y-1">
+                            <li>• Ukuran 36: 1 anak</li>
+                            <li>• Ukuran 37: 2 anak</li>
+                            <li>• Ukuran 38: <span class="text-amber-400 font-bold">3 anak (Paling Banyak)</span></li>
+                            <li>• Ukuran 39: 1 anak</li>
+                        </ul>
+                        <p class="text-emerald-400 font-bold text-lg mt-3">Modus = 38</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 18 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold w-fit">Fase 3: Pengukuran</span>
+                <h2 class="text-3xl font-bold">Tangga Konversi Satuan Panjang</h2>
+                <div class="grid grid-cols-2 gap-6 items-center">
+                    <div class="space-y-2 text-sm">
+                        <p class="text-slate-300">Urutan tangga dari atas ke bawah:</p>
+                        <div class="font-mono bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-1">
+                            <p class="text-red-400">km  (Kilometer)</p>
+                            <p class="pl-4 text-orange-400">hm  (Hektometer)</p>
+                            <p class="pl-8 text-yellow-400">dam (Dekameter)</p>
+                            <p class="pl-12 text-green-400">m   (Meter)</p>
+                            <p class="pl-16 text-teal-400">dm  (Desimeter)</p>
+                            <p class="pl-20 text-blue-400">cm  (Sentimeter)</p>
+                            <p class="pl-24 text-purple-400">mm  (Milimeter)</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl text-center space-y-4">
+                        <div class="p-3 bg-blue-500/20 rounded-xl border border-blue-500/30">
+                            <p class="font-bold text-blue-300">Turun 1 Tangga ➔ dikali 10</p>
+                        </div>
+                        <div class="p-3 bg-amber-500/20 rounded-xl border border-amber-500/30">
+                            <p class="font-bold text-amber-300">Naik 1 Tangga ➔ dibagi 10</p>
+                        </div>
+                        <p class="text-xs text-slate-400">Contoh: 3 km = 3 × 1.000 = 3.000 m</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 19 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold w-fit">Fase 3: Pengukuran</span>
+                <h2 class="text-3xl font-bold">Konversi Satuan Berat (Massa)</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-panel p-5 rounded-xl space-y-3">
+                        <h4 class="font-bold text-amber-300">Satuan Utama Kuintal & Ton</h4>
+                        <ul class="text-sm space-y-2 text-slate-300">
+                            <li class="bg-slate-900 p-2 rounded border border-slate-800">1 Ton = <span class="text-emerald-400 font-bold">1.000 kg</span></li>
+                            <li class="bg-slate-900 p-2 rounded border border-slate-800">1 Kuintal = <span class="text-emerald-400 font-bold">100 kg</span></li>
+                            <li class="bg-slate-900 p-2 rounded border border-slate-800">1 Ton = <span class="text-emerald-400 font-bold">10 Kuintal</span></li>
+                        </ul>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl space-y-3">
+                        <h4 class="font-bold text-amber-300">Tangga Satuan Gram</h4>
+                        <p class="text-xs text-slate-400">kg ➔ hg(ons) ➔ dag ➔ g ➔ dg ➔ cg ➔ mg</p>
+                        <div class="p-3 bg-slate-900 rounded-lg text-sm text-slate-300">
+                            <p>1 kg = 10 ons = 1.000 gram</p>
+                            <p>1 hg = 1 ons</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 20 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold w-fit">Fase 3: Pengukuran</span>
+                <h2 class="text-3xl font-bold">Konversi Satuan Waktu</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="glass-panel p-4 rounded-xl text-center">
+                        <p class="text-xs text-slate-400">Jam ke Menit</p>
+                        <p class="text-lg font-bold text-blue-400 mt-1">1 Jam = 60 Menit</p>
+                        <p class="text-xs text-slate-400 mt-2">2,5 Jam = 2,5 × 60 = 150 Menit</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl text-center">
+                        <p class="text-xs text-slate-400">Menit ke Detik</p>
+                        <p class="text-lg font-bold text-emerald-400 mt-1">1 Menit = 60 Detik</p>
+                        <p class="text-xs text-slate-400 mt-2">15 Menit = 15 × 60 = 900 Detik</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl text-center">
+                        <p class="text-xs text-slate-400">Hari ke Jam</p>
+                        <p class="text-lg font-bold text-purple-400 mt-1">1 Hari = 24 Jam</p>
+                        <p class="text-xs text-slate-400 mt-2">2 Hari = 48 Jam</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 21 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold w-fit">Fase 3: Pengukuran</span>
+                <h2 class="text-3xl font-bold">Konversi Satuan Volume (Liter & m³)</h2>
+                <p class="text-slate-300">Hubungan penting antara satuan kubik (m³) dan liter:</p>
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-emerald-500 grid grid-cols-2 gap-6 items-center">
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                            <p class="text-amber-300 font-bold">★ Jembatan Emas Hubungan Satuan:</p>
+                            <p class="text-xl font-bold text-emerald-400 mt-1">1 dm³ = 1 Liter</p>
+                            <p class="text-xl font-bold text-blue-400">1 cm³ = 1 ml = 1 cc</p>
+                            <p class="text-xl font-bold text-purple-400">1 m³ = 1.000 Liter</p>
+                        </div>
+                    </div>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p>• Tangga kubik (m³) setiap turun 1 tangga <span class="text-emerald-400 font-bold">dikali 1.000</span>.</p>
+                        <p>• Tangga Liter setiap turun 1 tangga <span class="text-emerald-400 font-bold">dikali 10</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 22 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold w-fit">Fase 3: Pengukuran</span>
+                <h2 class="text-3xl font-bold">Kalkulator Konversi Interaktif</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-sm text-slate-300">Coba ubah nilai panjang dari Meter ke Centimeter & Millimeter secara praktis:</p>
+                    <div class="flex items-center gap-4">
+                        <input type="number" id="meterInput" value="1" oninput="convertUnits()" class="bg-slate-900 border border-slate-700 text-white text-lg rounded-xl px-4 py-2 w-32 focus:outline-none focus:border-blue-500">
+                        <span class="font-bold text-lg">Meter (m) =</span>
+                        <div class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">
+                            <span id="cmResult" class="text-emerald-400 font-bold text-xl">100</span> cm
+                        </div>
+                        <div class="bg-slate-800 px-4 py-2 rounded-xl border border-slate-700">
+                            <span id="mmResult" class="text-amber-400 font-bold text-xl">1000</span> mm
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 23 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold w-fit">Fase 3: Rangkuman Materi</span>
+                <h2 class="text-3xl font-bold">Ringkasan Materi Inti</h2>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="glass-panel p-4 rounded-xl border-l-4 border-blue-500">
+                        <h4 class="font-bold text-blue-300">Pemusatan Data</h4>
+                        <p>• Mean = Jumlah ÷ Banyak Data</p>
+                        <p>• Median = Nilai Tengah (Urutkan!)</p>
+                        <p>• Modus = Frekuensi Terbanyak</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl border-l-4 border-amber-500">
+                        <h4 class="font-bold text-amber-300">Pengukuran Unit</h4>
+                        <p>• Panjang: Turun ×10 / Naik ÷10</p>
+                        <p>• Berat: 1 Ton = 10 Kw = 1000 kg</p>
+                        <p>• Volume: 1 dm³ = 1 Liter</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 4: GUIDED LEARNING (Slides 24-33) -->
+            <!-- Slide 24 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 1: Menghitung Mean</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Nilai hasil kuis IPA 5 siswa: <span class="text-amber-300 font-bold">75, 80, 85, 90, 70</span>. Hitunglah nilai Mean-nya!</p>
+                    <button onclick="toggleAnswer('g1')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Tampilkan Langkah Penyelesaian
+                    </button>
+                    <div id="g1" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p><strong>Langkah 1:</strong> Jumlahkan seluruh data</p>
+                        <p class="text-slate-400">75 + 80 + 85 + 90 + 70 = 400</p>
+                        <p><strong>Langkah 2:</strong> Bagi dengan jumlah siswa (5)</p>
+                        <p class="text-emerald-400 font-bold text-lg">Mean = 400 ÷ 5 = 80</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 25 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 2: Median Data Genap</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Data berat badan (kg): <span class="text-amber-300 font-bold">34, 38, 32, 40, 36, 36</span>. Berapakah Median-nya?</p>
+                    <button onclick="toggleAnswer('g2')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Tampilkan Langkah Penyelesaian
+                    </button>
+                    <div id="g2" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p><strong>Langkah 1:</strong> Urutkan dari terkecil ➔ 32, 34, <span class="text-amber-400 font-bold">36, 36</span>, 38, 40</p>
+                        <p><strong>Langkah 2:</strong> Ambil 2 nilai di tengah ➔ 36 dan 36</p>
+                        <p class="text-emerald-400 font-bold text-lg">Median = (36 + 36) ÷ 2 = 36 kg</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 26 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 3: Modus Tabel Frekuensi</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <table class="w-full text-sm text-left text-slate-300">
+                        <thead class="bg-slate-800 text-slate-400">
+                            <tr><th class="p-2">Hobi</th><th class="p-2">Banyak Siswa</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="p-2 border-b border-slate-800">Membaca</td><td class="p-2 border-b border-slate-800">8</td></tr>
+                            <tr><td class="p-2 border-b border-slate-800">Mewarnai</td><td class="p-2 border-b border-slate-800">12</td></tr>
+                            <tr><td class="p-2 border-b border-slate-800">Sepak Bola</td><td class="p-2 border-b border-slate-800">15</td></tr>
+                        </tbody>
+                    </table>
+                    <button onclick="toggleAnswer('g3')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Cari Modus
+                    </button>
+                    <div id="g3" class="hidden bg-slate-900 p-4 rounded-xl text-sm">
+                        <p class="text-emerald-400 font-bold text-lg">Modus = Sepak Bola (dengan frekuensi terbesar yaitu 15 siswa)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 27 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 4: Operasi Satuan Panjang</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Hitunglah: <span class="text-amber-300 font-bold">2 km + 300 m = ... m</span></p>
+                    <button onclick="toggleAnswer('g4')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Lihat Cara Kerja
+                    </button>
+                    <div id="g4" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p>Ubah 2 km ke meter: 2 × 1.000 = 2.000 m</p>
+                        <p>Jumlahkan: 2.000 m + 300 m</p>
+                        <p class="text-emerald-400 font-bold text-lg">= 2.300 m</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 28 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 5: Soal Cerita Berat</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Sebuah truk mengangkut <span class="text-amber-300 font-bold">1,5 ton</span> beras dan <span class="text-amber-300 font-bold">3 kuintal</span> gula. Berapa kg total muatan truk?</p>
+                    <button onclick="toggleAnswer('g5')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Buka Penyelesaian
+                    </button>
+                    <div id="g5" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p>1,5 ton = 1,5 × 1.000 kg = 1.500 kg</p>
+                        <p>3 kuintal = 3 × 100 kg = 300 kg</p>
+                        <p class="text-emerald-400 font-bold text-lg">Total = 1.500 kg + 300 kg = 1.800 kg</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 29 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 6: Konversi Durasi Waktu</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Andi belajar selama <span class="text-amber-300 font-bold">1 jam 45 menit</span>. Berapa menit total waktu belajar Andi?</p>
+                    <button onclick="toggleAnswer('g6')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Jawab
+                    </button>
+                    <div id="g6" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p>1 jam = 60 menit</p>
+                        <p>Total = 60 menit + 45 menit</p>
+                        <p class="text-emerald-400 font-bold text-lg">= 105 menit</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 30 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 7: Konversi Volume Air</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Sebuah wadah berisi <span class="text-amber-300 font-bold">2,5 liter</span> air. Berapa milliliter (ml) volume air tersebut?</p>
+                    <button onclick="toggleAnswer('g7')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Jawab
+                    </button>
+                    <div id="g7" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p>1 Liter = 1.000 ml</p>
+                        <p>2,5 × 1.000</p>
+                        <p class="text-emerald-400 font-bold text-lg">= 2.500 ml</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 31 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 8: Hubungan dm³ dan Liter</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Akuarium berisi <span class="text-amber-300 font-bold">50.000 cm³</span> air. Berapa liter air di dalam akuarium?</p>
+                    <button onclick="toggleAnswer('g8')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Jawab
+                    </button>
+                    <div id="g8" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p>Ingat: 1 cm³ = 1 ml, dan 1 dm³ = 1 Liter</p>
+                        <p>50.000 cm³ ➔ dm³ (naik 1 tangga kubik, bagi 1.000)</p>
+                        <p>50.000 ÷ 1.000 = 50 dm³</p>
+                        <p class="text-emerald-400 font-bold text-lg">= 50 Liter</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 32 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Contoh Terbimbing 9: Analisis Diagram Batang</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Jika pada diagram batang penjualan buku tercatat: Senin (10), Selasa (15), Rabu (20). Berapa rata-rata penjualan per hari?</p>
+                    <button onclick="toggleAnswer('g9')" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm transition">
+                        Hitung Rata-rata
+                    </button>
+                    <div id="g9" class="hidden bg-slate-900 p-4 rounded-xl text-sm space-y-2">
+                        <p>Total Penjualan = 10 + 15 + 20 = 45 buku</p>
+                        <p>Jumlah Hari = 3</p>
+                        <p class="text-emerald-400 font-bold text-lg">Mean = 45 ÷ 3 = 15 buku/hari</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 33 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 4: Pembimbingan</span>
+                <h2 class="text-3xl font-bold">Siap Latihan Mandiri!</h2>
+                <div class="glass-panel p-8 rounded-2xl text-center space-y-4">
+                    <i class="fa-solid fa-pen-ruler text-5xl text-blue-400"></i>
+                    <h3 class="text-2xl font-bold">Tahap Bimbingan Selesai</h3>
+                    <p class="text-slate-300 max-w-lg mx-auto">Sekarang saatnya kamu menguji pemahamanmu secara mandiri melalui latihan soal interaktif!</p>
+                </div>
+            </div>
+
+            <!-- PHASE 5: INDEPENDENT PRACTICE (Slides 34-39) -->
+            <!-- Slide 34 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 5: Latihan Mandiri</span>
+                <h2 class="text-3xl font-bold">Latihan 1: Mean Data Tunggal</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Hitung Mean dari data berikut: <span class="text-amber-300 font-bold">6, 7, 8, 8, 9, 10</span></p>
+                    <div class="flex gap-4">
+                        <button onclick="checkPractice('p1', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">A. 7.5</button>
+                        <button onclick="checkPractice('p1', true)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">B. 8.0</button>
+                        <button onclick="checkPractice('p1', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">C. 8.5</button>
+                    </div>
+                    <div id="p1-feedback" class="hidden text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Slide 35 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 5: Latihan Mandiri</span>
+                <h2 class="text-3xl font-bold">Latihan 2: Konversi Panjang</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Hasil dari <span class="text-amber-300 font-bold">4,5 m = ... cm</span> adalah?</p>
+                    <div class="flex gap-4">
+                        <button onclick="checkPractice('p2', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">A. 45 cm</button>
+                        <button onclick="checkPractice('p2', true)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">B. 450 cm</button>
+                        <button onclick="checkPractice('p2', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">C. 4.500 cm</button>
+                    </div>
+                    <div id="p2-feedback" class="hidden text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Slide 36 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 5: Latihan Mandiri</span>
+                <h2 class="text-3xl font-bold">Latihan 3: Median Data Ganjil</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Tentukan Median dari data: <span class="text-amber-300 font-bold">15, 11, 19, 13, 17</span></p>
+                    <div class="flex gap-4">
+                        <button onclick="checkPractice('p3', true)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">A. 15</button>
+                        <button onclick="checkPractice('p3', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">B. 13</button>
+                        <button onclick="checkPractice('p3', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">C. 19</button>
+                    </div>
+                    <div id="p3-feedback" class="hidden text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Slide 37 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 5: Latihan Mandiri</span>
+                <h2 class="text-3xl font-bold">Latihan 4: Konversi Berat</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300"><span class="text-amber-300 font-bold">2 kuintal + 50 kg = ... kg</span></p>
+                    <div class="flex gap-4">
+                        <button onclick="checkPractice('p4', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">A. 200 kg</button>
+                        <button onclick="checkPractice('p4', true)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">B. 250 kg</button>
+                        <button onclick="checkPractice('p4', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">C. 300 kg</button>
+                    </div>
+                    <div id="p4-feedback" class="hidden text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Slide 38 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 5: Latihan Mandiri</span>
+                <h2 class="text-3xl font-bold">Latihan 5: Waktu</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">2 jam 15 menit sama dengan berapa detik?</p>
+                    <div class="flex gap-4">
+                        <button onclick="checkPractice('p5', true)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">A. 8.100 Detik</button>
+                        <button onclick="checkPractice('p5', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">B. 7.200 Detik</button>
+                        <button onclick="checkPractice('p5', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">C. 9.000 Detik</button>
+                    </div>
+                    <div id="p5-feedback" class="hidden text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- Slide 39 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold w-fit">Fase 5: Latihan Mandiri</span>
+                <h2 class="text-3xl font-bold">Latihan 6: Volume</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <p class="text-slate-300">Air sebanyak <span class="text-amber-300 font-bold">3 dm³</span> sama dengan ... ml</p>
+                    <div class="flex gap-4">
+                        <button onclick="checkPractice('p6', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">A. 300 ml</button>
+                        <button onclick="checkPractice('p6', true)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">B. 3.000 ml</button>
+                        <button onclick="checkPractice('p6', false)" class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg">C. 30.000 ml</button>
+                    </div>
+                    <div id="p6-feedback" class="hidden text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- PHASE 6: CLOSING (Slides 40-42) -->
+            <!-- Slide 40 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 6: Penutup</span>
+                <h2 class="text-3xl font-bold">Rangkuman Pembelajaran</h2>
+                <div class="glass-panel p-6 rounded-2xl space-y-3 text-sm text-slate-300">
+                    <p><i class="fa-solid fa-check text-emerald-400 mr-2"></i><strong>Penyajian Data:</strong> Menggunakan tabel, diagram batang, garis, dan lingkaran.</p>
+                    <p><i class="fa-solid fa-check text-emerald-400 mr-2"></i><strong>Mean:</strong> Total Data ÷ Banyak Data.</p>
+                    <p><i class="fa-solid fa-check text-emerald-400 mr-2"></i><strong>Median:</strong> Urutkan data, ambil nilai tengah.</p>
+                    <p><i class="fa-solid fa-check text-emerald-400 mr-2"></i><strong>Modus:</strong> Data dengan frekuensi terbanyak.</p>
+                    <p><i class="fa-solid fa-check text-emerald-400 mr-2"></i><strong>Pengukuran:</strong> Menguasai tangga konversi panjang, berat, waktu, dan volume (1 dm³ = 1 Liter).</p>
+                </div>
+            </div>
+
+            <!-- Slide 41 -->
+            <div class="slide flex-col space-y-6">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold w-fit">Fase 6: Penutup</span>
+                <h2 class="text-3xl font-bold">Refleksi Diri</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="glass-panel p-5 rounded-xl text-center space-y-2">
+                        <p class="text-3xl">😃</p>
+                        <h4 class="font-bold">Paham Banget</h4>
+                        <p class="text-xs text-slate-400">Siap membantu teman lain!</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl text-center space-y-2">
+                        <p class="text-3xl">🙂</p>
+                        <h4 class="font-bold">Cukup Paham</h4>
+                        <p class="text-xs text-slate-400">Perlu sedikit berlatih lagi.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl text-center space-y-2">
+                        <p class="text-3xl">🤔</p>
+                        <h4 class="font-bold">Butuh Bantuan</h4>
+                        <p class="text-xs text-slate-400">Ingin diskusi lagi dengan guru.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 42 -->
+            <div class="slide flex-col items-center justify-center text-center space-y-6">
+                <span class="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold border border-emerald-500/30">
+                    Selesai
+                </span>
+                <h1 class="text-5xl font-extrabold text-white tracking-tight">
+                    Hebat! Kamu Luar Biasa 🎉
+                </h1>
+                <p class="text-xl text-slate-300 max-w-xl">
+                    Kamu telah menyelesaikan seluruh materi Statistika, Data, dan Pengukuran Kelas 6. Teruslah berlatih!
+                </p>
+                <button onclick="goToSlide(0)" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold transition flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> Ulangi Presentasi
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <footer class="glass-panel px-6 py-3 flex items-center justify-between z-20">
+        <button id="prev-btn" onclick="prevSlide()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-sm border border-slate-700 transition flex items-center gap-2">
+            <i class="fa-solid fa-chevron-left"></i> Sebelumnya
+        </button>
+
+        <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400">Lompat ke:</span>
+            <select id="slide-select" onchange="goToSlide(parseInt(this.value))" class="bg-slate-800 border border-slate-700 text-slate-200 text-xs rounded-lg px-2 py-1.5 focus:outline-none">
+                <!-- Dynamic Options -->
+            </select>
+        </div>
+
+        <button id="next-btn" onclick="nextSlide()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+            Selanjutnya <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </footer>
+
+    <!-- Modal Table of Contents -->
+    <div id="toc-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex-col justify-center items-center p-6">
+        <div class="glass-panel max-w-2xl w-full max-h-[80vh] rounded-2xl p-6 flex flex-col space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-list-ul mr-2 text-blue-400"></i>Daftar Isi Presentasi</h3>
+                <button onclick="toggleTOC()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="toc-list" class="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-2">
+                <!-- Dynamic List Items -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let chartInstances = {};
+
+        // Initialize Slide App
+        window.onload = function() {
+            document.getElementById('total-slides-num').innerText = totalSlides;
+            populateSlideSelect();
+            populateTOC();
+            updateSlideView();
+            initCharts();
+        };
+
+        function updateSlideView() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if(index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            // Update header info & progress
+            document.getElementById('current-slide-num').innerText = currentSlide + 1;
+            document.getElementById('slide-select').value = currentSlide;
+            const progressPercent = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+            // Button status
+            document.getElementById('prev-btn').disabled = currentSlide === 0;
+            document.getElementById('prev-btn').style.opacity = currentSlide === 0 ? '0.5' : '1';
+            
+            if (currentSlide === totalSlides - 1) {
+                document.getElementById('next-btn').style.display = 'none';
+            } else {
+                document.getElementById('next-btn').style.display = 'flex';
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlideView();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlideView();
+            }
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSlideView();
+                const modal = document.getElementById('toc-modal');
+                if(!modal.classList.contains('hidden')) toggleTOC();
+            }
+        }
+
+        function populateSlideSelect() {
+            const select = document.getElementById('slide-select');
+            select.innerHTML = '';
+            slides.forEach((slide, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                const title = slide.querySelector('h2, h1')?.innerText || `Slide ${i+1}`;
+                opt.innerText = `${i+1}. ${title.substring(0, 25)}...`;
+                select.appendChild(opt);
+            });
+        }
+
+        function populateTOC() {
+            const tocList = document.getElementById('toc-list');
+            tocList.innerHTML = '';
+            slides.forEach((slide, i) => {
+                const title = slide.querySelector('h2, h1')?.innerText || `Slide ${i+1}`;
+                const badge = slide.querySelector('span')?.innerText || 'Materi';
+                
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-3 rounded-xl bg-slate-800/60 hover:bg-slate-700/80 cursor-pointer border border-slate-700/50 transition";
+                item.onclick = () => goToSlide(i);
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-6 h-6 rounded-full bg-blue-600/30 text-blue-400 text-xs font-bold flex items-center justify-center border border-blue-500/30">${i+1}</span>
+                        <span class="text-sm font-medium text-slate-200">${title}</span>
+                    </div>
+                    <span class="text-xs px-2 py-0.5 bg-slate-900 text-slate-400 rounded-md border border-slate-800">${badge}</span>
+                `;
+                tocList.appendChild(item);
+            });
+        }
+
+        function toggleTOC() {
+            const modal = document.getElementById('toc-modal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                document.getElementById('fullscreen-icon').className = 'fa-solid fa-compress';
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    document.getElementById('fullscreen-icon').className = 'fa-solid fa-expand';
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                const modal = document.getElementById('toc-modal');
+                if(!modal.classList.contains('hidden')) toggleTOC();
+            }
+        });
+
+        // Toggle answer visibility
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        // Interactive unit converter
+        function convertUnits() {
+            const m = parseFloat(document.getElementById('meterInput').value) || 0;
+            document.getElementById('cmResult').innerText = m * 100;
+            document.getElementById('mmResult').innerText = m * 1000;
+        }
+
+        // Check practice option feedback
+        function checkPractice(id, isCorrect) {
+            const feedback = document.getElementById(`${id}-feedback`);
+            feedback.classList.remove('hidden', 'text-emerald-400', 'text-red-400');
+            if (isCorrect) {
+                feedback.classList.add('text-emerald-400');
+                feedback.innerText = '✨ Jawaban Benar! Kerja bagus!';
+            } else {
+                feedback.classList.add('text-red-400');
+                feedback.innerText = '❌ Belum Tepat. Coba periksa kembali perhitunganmu!';
+            }
+        }
+
+        // Chart.js Demos
+        function initCharts() {
+            // Bar Chart Demo
+            const ctxBar = document.getElementById('barChartDemo')?.getContext('2d');
+            if(ctxBar) {
+                new Chart(ctxBar, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Sepak Bola', 'Bulu Tangkis', 'Renang', 'Voli'],
+                        datasets: [{
+                            label: 'Jumlah Siswa Menyukai',
+                            data: [12, 8, 10, 5],
+                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6'],
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                            x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // Line Chart Demo
+            const ctxLine = document.getElementById('lineChartDemo')?.getContext('2d');
+            if(ctxLine) {
+                new Chart(ctxLine, {
+                    type: 'line',
+                    data: {
+                        labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'],
+                        datasets: [{
+                            label: 'Suhu Tubuh (°C)',
+                            data: [36.5, 37.0, 38.2, 36.8, 36.6],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+                            x: { ticks: { color: '#94a3b8' }, grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // Pie Chart Demo
+            const ctxPie = document.getElementById('pieChartDemo')?.getContext('2d');
+            if(ctxPie) {
+                new Chart(ctxPie, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Sepeda', 'Jalan Kaki', 'Bus', 'Antar Jemput'],
+                        datasets: [{
+                            data: [40, 30, 20, 10],
+                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { color: '#f8fafc' }, position: 'bottom' }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
